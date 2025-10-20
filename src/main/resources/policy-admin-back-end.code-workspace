@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "policy-admin-back-end",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

@@ -1,4 +1,27 @@
 spring:
   application:
     name: policy-admin-back-end
-
+  security:
+    user:
+      name: dev
+      password: dev123  
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:policyadmin}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:pass}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+      platform: postgresql
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
