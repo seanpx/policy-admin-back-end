@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: policy-admin-back-end
+
