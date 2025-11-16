@@ -15,8 +15,15 @@ spring:
       ddl-auto: none
   sql:
     init:
-      mode: always
+      mode: never
       platform: postgresql
+  flyway:
+    # The database already has objects in the public schema.
+    # Baseline on first migrate so Flyway can create its history table
+    # without trying to re-apply prior changes.
+    baseline-on-migrate: true
+    # If you need V1 to run as well, set baseline-version to 0 instead of the default 1
+    # baseline-version: 0
 management:
   endpoints:
     web:

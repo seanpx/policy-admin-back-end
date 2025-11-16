@@ -44,15 +44,17 @@ This project bridges **AS400 insurance logic** to modern Java concepts.
 ## 📦 Folder Structure
 
 /src
- ├─ main/java/com/policy/admin/
- │   ├─ controller/     → REST endpoints
- │   ├─ service/        → Business logic
- │   ├─ repository/     → JPA repositories
+ ├─ main/java/com/pas/policy_admin_back_end/
+ │   ├─ controller/     → REST endpoints (HTTP adapters kept thin)
+ │   ├─ dto/            → Request/response contracts
+ │   ├─ service/        → Business logic orchestrators
  │   ├─ domain/         → Entities, value objects
  │   └─ config/         → App and DB configs
  └─ main/resources/
      ├─ application.yml
      └─ db/migration/
+
+Controllers validate/map HTTP requests and then hand work to services so that policy logic stays outside the web layer.
 
 ---
 
@@ -118,7 +120,3 @@ This version is **Codex-friendly** — meaning:
 ---
 
 Would you like me to now generate a **matching `README.md`** for your **frontend (React) service** — following the same pattern but focusing on Vite, shadcn/ui, and React Query setup?
-
-
-
-
