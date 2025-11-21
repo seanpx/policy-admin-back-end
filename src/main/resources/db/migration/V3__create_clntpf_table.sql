@@ -50,7 +50,8 @@ CREATE TABLE IF NOT EXISTS clntpf (
     ctrydesc  VARCHAR(30),
     mailing   VARCHAR(1),
     usrprf    VARCHAR(10),
-    PRIMARY KEY (clntpfx, clntcoy, clntnum)
+    PRIMARY KEY (clntpfx, clntcoy, clntnum),
+    CONSTRAINT uq_clntpf_client_key UNIQUE (clntpfx, clntcoy, clntnum)
 );
 
 -- Maintain datime (audit timestamp) automatically
