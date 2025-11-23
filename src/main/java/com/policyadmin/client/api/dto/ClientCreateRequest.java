@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
+import org.springframework.lang.NonNull;
 
 /**
  * Payload for creating a client (runs through KYC first).
@@ -19,7 +20,7 @@ public record ClientCreateRequest(
         @NotBlank String idNumber,
         boolean ignorePossibleMatch
 ) {
-    public ClientKycRequest toKycRequest() {
+    public @NonNull ClientKycRequest toKycRequest() {
         return new ClientKycRequest(
                 surname,
                 givname,
@@ -31,7 +32,7 @@ public record ClientCreateRequest(
         );
     }
 
-    public Client toEntity() {
+    public @NonNull Client toEntity() {
         return new Client(
                 surname,
                 givname,

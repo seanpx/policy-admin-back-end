@@ -5,6 +5,7 @@ import com.policyadmin.client.domain.Client;
 import com.policyadmin.client.kyc.ClientKycValidationResult;
 import com.policyadmin.client.kyc.ClientKycValidator;
 import com.policyadmin.client.repository.ClientRepository;
+import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +34,7 @@ public class ClientCommandService {
         if (!validation.isOkToCreate()) {
             return ClientCreationResult.rejected(validation);
         }
-        Client saved = clientRepository.save(request.toEntity());
+        Client saved = Objects.requireNonNull(clientRepository.save(request.toEntity()));
         return ClientCreationResult.created(saved.getClntnum(), validation);
     }
 

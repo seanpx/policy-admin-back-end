@@ -8,6 +8,7 @@ import com.policyadmin.client.service.ClientCommandService;
 import com.policyadmin.client.service.ClientCommandService.ClientCreationResult;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.Objects;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,7 @@ public class ClientController {
         ClientCreationResult result = clientCommandService.create(request);
         ClientCreateResponse response = new ClientCreateResponse(result.clientId(), result.validationResult());
         if (result.created()) {
-            URI location = URI.create("/api/clients/" + result.clientId());
+            URI location = Objects.requireNonNull(URI.create("/api/clients/" + result.clientId()));
             return ResponseEntity.created(location).body(response);
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
