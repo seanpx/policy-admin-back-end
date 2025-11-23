@@ -58,6 +58,15 @@ Controllers validate/map HTTP requests and then hand work to services so that po
 
 ---
 
+## Project Documentation
+
+- [KYC Validation Design](docs/client-kyc-validation.md)
+- [Client Domain Model](docs/client-domain-model.md)
+- [API Design](docs/client-api-design.md)
+- [Database Schema](docs/client-db-schema.md)
+
+---
+
 ## Build
 
 ```bash
