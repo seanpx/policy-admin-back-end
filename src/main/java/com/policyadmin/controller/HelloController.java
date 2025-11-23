@@ -1,7 +1,7 @@
-package com.pas.policy_admin_back_end.controller;
+package com.policyadmin.controller;
 
-import com.pas.policy_admin_back_end.dto.GreetingResponse;
-import com.pas.policy_admin_back_end.service.GreetingService;
+import com.policyadmin.dto.GreetingResponse;
+import com.policyadmin.service.GreetingService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

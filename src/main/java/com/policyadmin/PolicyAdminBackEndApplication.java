@@ -1,12 +1,9 @@
-package com.pas.policy_admin_back_end;
+package com.policyadmin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {
-        "com.pas.policy_admin_back_end",
-        "com.policyadmin"
-})
+@SpringBootApplication
 public class PolicyAdminBackEndApplication {
 
 	public static void main(String[] args) {

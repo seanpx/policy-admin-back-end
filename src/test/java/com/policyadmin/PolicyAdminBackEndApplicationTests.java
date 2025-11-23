@@ -1,4 +1,4 @@
-package com.pas.policy_admin_back_end;
+package com.policyadmin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

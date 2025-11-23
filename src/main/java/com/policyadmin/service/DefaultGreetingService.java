@@ -1,6 +1,6 @@
-package com.pas.policy_admin_back_end.service;
+package com.policyadmin.service;
 
-import com.pas.policy_admin_back_end.dto.GreetingResponse;
+import com.policyadmin.dto.GreetingResponse;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,4 +1,4 @@
-package com.pas.policy_admin_back_end.dto;
+package com.policyadmin.dto;
 
 public record GreetingResponse(boolean ok, String message) {
 }
