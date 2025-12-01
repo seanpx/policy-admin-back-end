@@ -1,0 +1,12 @@
+
+
+## 2025-12-01: Implemented a configurable ID type list and exposed it via a new API. Key changes:
+
+Added configurable ID-type entries to src/main/resources/application.yml and bound them with src/main/java/com/policyadmin/config/ClientIdTypeProperties.java, enabling scanning in src/main/java/com/policyadmin/PolicyAdminBackEndApplication.java.
+Created DTO/service for the dropdown values (src/main/java/com/policyadmin/client/api/dto/IdTypeResponse.java, src/main/java/com/policyadmin/client/service/IdTypeQueryService.java).
+Added GET /api/clients/id-types to src/main/java/com/policyadmin/client/api/ClientController.java returning [{"code":"IC","description":"Singapore NRIC"},{"code":"IP","description":"International Passport"}] by default; expand the list via config without code changes.
+
+
+Successfully run mvn test or hit GET /api/clients/id-types (with existing auth) to verify the response.
+
+

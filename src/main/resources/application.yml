@@ -24,6 +24,13 @@ spring:
     baseline-on-migrate: true
     # If you need V1 to run as well, set baseline-version to 0 instead of the default 1
     # baseline-version: 0
+
+client:
+  id-types:
+    - code: IC
+      description: Singapore NRIC
+    - code: IP
+      description: International Passport
 management:
   endpoints:
     web:
