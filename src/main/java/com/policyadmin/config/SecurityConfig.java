@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    @SuppressWarnings("null")
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
