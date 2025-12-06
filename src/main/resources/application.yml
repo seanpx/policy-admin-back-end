@@ -39,3 +39,12 @@ management:
   endpoint:
     health:
       show-details: when_authorized
+
+logging:
+  level:
+    root: INFO
+    "[com.policyadmin]": DEBUG
+    "[org.springframework]": INFO
+ ## debug:
+  ##  always-on: true   # set to false when you don’t want always-on debug
+

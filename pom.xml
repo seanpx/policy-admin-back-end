@@ -82,13 +82,18 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
-        <!-- Flyway 10+/11+ split DB support into separate modules.
-             Add the PostgreSQL database support so Flyway can recognize
-             and manage a PostgreSQL database. -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-postgresql</artifactId>
-        </dependency>
+		<!-- Flyway 10+/11+ split DB support into separate modules.
+		     Add the PostgreSQL database support so Flyway can recognize
+		     and manage a PostgreSQL database. -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -121,3 +126,8 @@
 	</build>
 
 </project>
+
+
+
+
+

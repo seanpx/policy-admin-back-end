@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "client.id-types",
+      "type": "java.util.List<com.policyadmin.config.ClientIdTypeProperties.IdType>",
+      "description": "Allowed client ID types."
+    },
+    {
+      "name": "client.id-types[].code",
+      "type": "java.lang.String",
+      "description": "Three-character ID type code."
+    },
+    {
+      "name": "client.id-types[].description",
+      "type": "java.lang.String",
+      "description": "Human-friendly label for the ID type."
+    }
+  ]
+}
