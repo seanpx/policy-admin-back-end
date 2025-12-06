@@ -43,7 +43,7 @@ management:
 logging:
   level:
     root: INFO
-    "[com.policyadmin]": DEBUG
+    "[com.policyadmin]": INFO
     "[org.springframework]": INFO
  ## debug:
   ##  always-on: true   # set to false when you don’t want always-on debug

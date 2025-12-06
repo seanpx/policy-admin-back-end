@@ -52,6 +52,13 @@
             <maxHistory>5</maxHistory>
             <totalSizeCap>200MB</totalSizeCap>
         </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return "true".equals(mdc.get("debugEnabled"));</expression>
+            </evaluator>
+            <OnMismatch>DENY</OnMismatch>
+            <OnMatch>NEUTRAL</OnMatch>
+        </filter>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>TRACE</level>
             <onMatch>ACCEPT</onMatch>

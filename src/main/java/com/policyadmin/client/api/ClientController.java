@@ -15,6 +15,7 @@ import com.policyadmin.logging.SafeLogging;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -122,17 +123,21 @@ public class ClientController {
                         "idNumber", request.idNumber(),
                         "ignorePossibleMatch", request.ignorePossibleMatch()
                 ))),
-                StructuredArguments.keyValue("response", SafeLogging.sanitize(Map.of(
-                        "clientId", response.clientId(),
-                        "validationResult", response.validationResult(),
-                        "created", result.created()
-                )))
+                StructuredArguments.keyValue("response", SafeLogging.sanitize(responsePayload(response, result)))
         );
         if (result.created()) {
             URI location = Objects.requireNonNull(URI.create("/api/clients/" + result.clientId()));
             return ResponseEntity.created(location).body(response);
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
+
+    private Map<String, Object> responsePayload(ClientCreateResponse response, ClientCreationResult result) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("clientId", response.clientId());
+        payload.put("validationResult", response.validationResult());
+        payload.put("created", result.created());
+        return payload;
     }
 
     private ClientCreateRequest toCreateRequest(ClientKycValidateRequest request) {
