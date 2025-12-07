@@ -14,6 +14,21 @@
       "name": "client.id-types[].description",
       "type": "java.lang.String",
       "description": "Human-friendly label for the ID type."
+    },
+    {
+      "name": "client.genders",
+      "type": "java.util.List<com.policyadmin.config.ClientGenderProperties.Gender>",
+      "description": "Allowed client genders."
+    },
+    {
+      "name": "client.genders[].code",
+      "type": "java.lang.String",
+      "description": "Single-character gender code."
+    },
+    {
+      "name": "client.genders[].description",
+      "type": "java.lang.String",
+      "description": "Human-friendly label for the gender."
     }
   ]
 }

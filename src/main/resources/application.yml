@@ -31,6 +31,11 @@ client:
       description: Singapore NRIC
     - code: IP
       description: International Passport
+  genders:
+    - code: M
+      description: Male
+    - code: F
+      description: Female
 management:
   endpoints:
     web:
@@ -42,9 +47,7 @@ management:
 
 logging:
   level:
-    root: INFO
-    "[com.policyadmin]": INFO
-    "[org.springframework]": INFO
- ## debug:
-  ##  always-on: true   # set to false when you don’t want always-on debug
-
+    com.policyadmin: DEBUG
+    org.springframework: INFO
+  debug:
+    always-on: false   # set to false when you don’t want always-on debug

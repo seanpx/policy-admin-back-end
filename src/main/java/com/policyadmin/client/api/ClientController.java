@@ -5,10 +5,12 @@ import com.policyadmin.audit.AuditEventService;
 import com.policyadmin.client.api.dto.ClientCreateRequest;
 import com.policyadmin.client.api.dto.ClientCreateResponse;
 import com.policyadmin.client.api.dto.ClientKycValidateRequest;
+import com.policyadmin.client.api.dto.GenderResponse;
 import com.policyadmin.client.api.dto.IdTypeResponse;
 import com.policyadmin.client.kyc.ClientKycValidationResult;
 import com.policyadmin.client.service.ClientCommandService;
 import com.policyadmin.client.service.ClientCommandService.ClientCreationResult;
+import com.policyadmin.client.service.GenderQueryService;
 import com.policyadmin.client.service.IdTypeQueryService;
 import com.policyadmin.logging.CorrelationIdFilter;
 import com.policyadmin.logging.SafeLogging;
@@ -41,12 +43,14 @@ public class ClientController {
 
     private final ClientCommandService clientCommandService;
     private final IdTypeQueryService idTypeQueryService;
+    private final GenderQueryService genderQueryService;
     private final AuditEventService auditEventService;
 
     public ClientController(ClientCommandService clientCommandService, IdTypeQueryService idTypeQueryService,
-            AuditEventService auditEventService) {
+            GenderQueryService genderQueryService, AuditEventService auditEventService) {
         this.clientCommandService = clientCommandService;
         this.idTypeQueryService = idTypeQueryService;
+        this.genderQueryService = genderQueryService;
         this.auditEventService = auditEventService;
     }
 
@@ -102,6 +106,34 @@ public class ClientController {
                 Map.of("count", idTypes.size())
         ));
         return ResponseEntity.ok(idTypes);
+    }
+
+    @GetMapping("/genders")
+    public ResponseEntity<List<GenderResponse>> listGenders(HttpServletRequest request) {
+        List<GenderResponse> genders = genderQueryService.listGenders();
+        log.info("client.genders",
+                StructuredArguments.keyValue("correlationId", MDC.get(CorrelationIdFilter.CORRELATION_ID_KEY)),
+                StructuredArguments.keyValue("count", genders.size()),
+                StructuredArguments.keyValue("status", "OK"));
+        SafeLogging.debug(log, "client.genders.payload",
+                StructuredArguments.keyValue("request", SafeLogging.sanitize(Map.of(
+                        "remoteIp", request.getRemoteAddr()
+                ))),
+                StructuredArguments.keyValue("response", SafeLogging.sanitize(Map.of(
+                        "count", genders.size(),
+                        "items", genders
+                ))));
+        auditEventService.record(new AuditEventData(
+                "CLIENT_GENDERS_VIEWED",
+                "GENDER_LIST",
+                null,
+                "USER",
+                currentUserId(),
+                MDC.get(CorrelationIdFilter.CORRELATION_ID_KEY),
+                request.getRemoteAddr(),
+                Map.of("count", genders.size())
+        ));
+        return ResponseEntity.ok(genders);
     }
 
     @PostMapping
